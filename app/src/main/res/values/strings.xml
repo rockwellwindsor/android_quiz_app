@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">To be or not to be true</string>
+    <string name="question_text">"It is the east, and Juliet is the sun"</string>
+    <string name="true_button">True</string>
+    <string name="false_button">False</string>
+    <string name="correct_answer">You got it correct!</string>
+    <string name="incorrect_answer">Sorry, that answer is not correct.  Please try again.</string>
+    <string name="action_settings">Settings</string>
+</resources>
