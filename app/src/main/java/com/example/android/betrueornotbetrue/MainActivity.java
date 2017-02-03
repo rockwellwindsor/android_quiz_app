@@ -1,5 +1,6 @@
 package com.example.android.betrueornotbetrue;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mFalseButton;
     private ImageButton mNextButton;
     private ImageButton mPreviousButton;
+    private Button mCheatButton;
 
     private TextView mQuestionTextView;
 
@@ -51,6 +54,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public Intent getIntent() {
+        return super.getIntent();
     }
 
     @Override
@@ -98,6 +106,16 @@ public class MainActivity extends AppCompatActivity {
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionArray.length;
                 int question = mQuestionArray[mCurrentIndex].getTextResId();
                 mQuestionTextView.setText(question);
+            }
+        });
+
+        mCheatButton = (Button) findViewById(R.id.cheat_button);
+        mCheatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // This is an explicit intent.  An explicit intent is used to start activities within the application.
+                Intent i = new Intent(MainActivity.this, CheatActivity.class);
+                startActivity(i);
             }
         });
 
