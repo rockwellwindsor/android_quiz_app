@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">To be or not to be true</string>
     <string name="next_button">Next</string>
+    <string name="previous_button">Previous</string>
     <string name="true_button">True</string>
     <string name="false_button">False</string>
     <string name="correct_toast">You got it correct!</string>
