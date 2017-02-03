@@ -26,6 +26,27 @@ public class MainActivity extends AppCompatActivity {
 
     private int mCurrentIndex = 0;
 
+    // Update the question index
+    private void updateQuestion() {
+        int question = mQuestionArray[mCurrentIndex].getTextResId();
+        mQuestionTextView.setText(question);
+    }
+
+    // Check if the answer is correct or not
+    private void checkAnswer(boolean userPressedTrue) {
+        boolean answerIsTrue = mQuestionArray[mCurrentIndex].isAnswerTrue();
+
+        int messageResId = 0;
+
+        if (userPressedTrue == answerIsTrue) {
+            messageResId = R.string.correct_toast;
+        } else {
+            messageResId = R.string.incorrect_toast;
+        }
+
+        Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, R.string.correct_answer, Toast.LENGTH_SHORT).show();
+                checkAnswer(true);
             }
         });
 
@@ -47,16 +68,21 @@ public class MainActivity extends AppCompatActivity {
         mFalseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, R.string.incorrect_answer, Toast.LENGTH_SHORT).show();
+                checkAnswer(false);
+//                Toast.makeText(MainActivity.this, R.string.incorrect_answer, Toast.LENGTH_SHORT).show();
             }
         });
 
-        mNextButton = (Button) findViewById(R.id.false_button);
+        mNextButton = (Button) findViewById(R.id.next_button);
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, R.string.incorrect_answer, Toast.LENGTH_SHORT).show();
+                mCurrentIndex = (mCurrentIndex + 1) % mQuestionArray.length;
+                int question = mQuestionArray[mCurrentIndex].getTextResId();
+                mQuestionTextView.setText(question);
             }
         });
+
+        updateQuestion();
     }
 }

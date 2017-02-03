@@ -3,8 +3,8 @@
     <string name="next_button">Next</string>
     <string name="true_button">True</string>
     <string name="false_button">False</string>
-    <string name="correct_answer">You got it correct!</string>
-    <string name="incorrect_answer">Sorry, that answer is not correct.  Please try again.</string>
+    <string name="correct_toast">You got it correct!</string>
+    <string name="incorrect_toast">Sorry, that answer is not correct.  Please try again.</string>
     <string name="action_settings">Settings</string>
 
     <string name="question1">Question 1</string>
