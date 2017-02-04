@@ -114,7 +114,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // This is an explicit intent.  An explicit intent is used to start activities within the application.
-                Intent i = new Intent(MainActivity.this, CheatActivity.class);
+                boolean answerIsTrue = mQuestionArray[mCurrentIndex].isAnswerTrue();
+                Intent i = CheatActivity.newIntent(MainActivity.this, answerIsTrue);
                 startActivity(i);
             }
         });
