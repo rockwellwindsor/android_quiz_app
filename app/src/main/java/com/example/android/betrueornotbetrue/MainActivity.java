@@ -138,18 +138,26 @@ public class MainActivity extends AppCompatActivity {
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         Log.i(TAG, "onSavedInstanceState called");
+        if(mIsCheater) {
+            Log.i(TAG, "Is cheating");
+        } else {
+            Log.i(TAG, "Is not cheating");
+        }
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
+        savedInstanceState.putBoolean("isCheater", mIsCheater);
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode != Activity.RESULT_OK) {
             return;
         } else {
             if (requestCode == REQUEST_CODE_CHEAT) {
-                return;
+                if (data == null) {
+                    return;
+                }
+                mIsCheater = CheatActivity.wasAnswerShown(data);
             }
-            mIsCheater = CheatActivity.wasAnswerShown(data);
         }
     }
 

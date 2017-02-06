@@ -4,14 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Button;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class CheatActivity extends AppCompatActivity {
 
     private static final String EXTRA_ANSWER_IS_TRUE = "com.bignerdranch.android.betrueornotbetrue.answer_is_true";
     private static final String EXTRA_ANSWER_SHOWN = "com.bignerdranch.android.betrueornotbetrue.answer_shown";
+    private boolean mAnswerIsTrue;
+    private TextView mAnswerTextView;
+    private Button mShowAnswer;
+    private static final String TAG = "Cheat Activity";
 
     public static Intent newIntent(Context packageContext, boolean answerIsTrue) {
         Intent i = new Intent(packageContext, CheatActivity.class);
@@ -22,11 +27,6 @@ public class CheatActivity extends AppCompatActivity {
     public static boolean wasAnswerShown(Intent result) {
         return result.getBooleanExtra(EXTRA_ANSWER_SHOWN, false);
     }
-
-    private boolean mAnswerIsTrue;
-
-    private TextView mAnswerTextView;
-    private Button mShowAnswer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,7 @@ public class CheatActivity extends AppCompatActivity {
                     mAnswerTextView.setText(R.string.false_button);
                 }
                 setAnswerShownResult(true);
+                Log.i(TAG, "Answer was shown");
             }
         });
     }
@@ -54,6 +55,7 @@ public class CheatActivity extends AppCompatActivity {
     private void setAnswerShownResult(boolean isAnswerShown) {
         Intent data = new Intent();
         data.putExtra(EXTRA_ANSWER_SHOWN, isAnswerShown);
+        Log.i(TAG, Boolean.toString(isAnswerShown));
         setResult(RESULT_OK, data);
     }
 }
