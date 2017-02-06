@@ -129,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState != null) {
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+            mIsCheater = savedInstanceState.getBoolean(TAG, mIsCheater);
         }
 
         updateQuestion();
@@ -138,13 +139,14 @@ public class MainActivity extends AppCompatActivity {
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         Log.i(TAG, "onSavedInstanceState called");
+
         if(mIsCheater) {
             Log.i(TAG, "Is cheating");
         } else {
             Log.i(TAG, "Is not cheating");
         }
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
-        savedInstanceState.putBoolean("isCheater", mIsCheater);
+        savedInstanceState.putBoolean(TAG, mIsCheater);
     }
 
     @Override
