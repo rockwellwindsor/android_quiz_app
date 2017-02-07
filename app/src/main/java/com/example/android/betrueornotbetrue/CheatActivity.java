@@ -18,6 +18,9 @@ public class CheatActivity extends AppCompatActivity {
     private Button mShowAnswer;
     private static final String TAG = "Cheat Activity";
 
+    private static final String CHEATING_STATUS = "index";
+    private boolean mAnswerWasShown;
+
     public static Intent newIntent(Context packageContext, boolean answerIsTrue) {
         Intent i = new Intent(packageContext, CheatActivity.class);
         i.putExtra(EXTRA_ANSWER_IS_TRUE, answerIsTrue);
@@ -33,6 +36,7 @@ public class CheatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cheat);
 
+        Log.i("onCreate Called", Boolean.toString(mAnswerWasShown));
         mAnswerIsTrue = getIntent().getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false);
 
         mAnswerTextView = (TextView) findViewById(R.id.answer_text_view);
@@ -46,16 +50,39 @@ public class CheatActivity extends AppCompatActivity {
                 } else {
                     mAnswerTextView.setText(R.string.false_button);
                 }
-                setAnswerShownResult(true);
+                mAnswerWasShown = true;
+                setAnswerShownResult(mAnswerWasShown);
+
                 Log.i(TAG, "Answer was shown");
+                Log.i(TAG, "Answer status :" + Boolean.toString(mAnswerWasShown));
             }
         });
+        if (savedInstanceState != null) {
+            mAnswerWasShown = savedInstanceState.getBoolean(CHEATING_STATUS, mAnswerWasShown);
+            if (mAnswerWasShown) {
+                mAnswerTextView.setText(R.string.true_button);
+                mAnswerWasShown = true;
+                setAnswerShownResult(mAnswerWasShown);
+                Log.i(TAG, "Answer status onCreate:" + Boolean.toString(mAnswerWasShown));
+            } else {
+                //
+            }
+        }
     }
 
-    private void setAnswerShownResult(boolean isAnswerShown) {
+    private void setAnswerShownResult(boolean shown) {
         Intent data = new Intent();
-        data.putExtra(EXTRA_ANSWER_SHOWN, isAnswerShown);
-        Log.i(TAG, Boolean.toString(isAnswerShown));
+        data.putExtra(EXTRA_ANSWER_SHOWN, shown);
         setResult(RESULT_OK, data);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        Log.i(TAG, "Answer status :" + Boolean.toString(mAnswerWasShown));
+        Log.i(TAG, "onSavedInstanceState called");
+
+        savedInstanceState.putBoolean(CHEATING_STATUS, mAnswerWasShown);
+
     }
 }

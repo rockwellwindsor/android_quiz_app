@@ -16,7 +16,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="5d0eb17121daf5ddf9d30e989b022c2ee5b441cd">
+        sha1="d3ef14ecb7bbbfa280ac0569a4c4f246c0c78cfa">
         <dex dex="/Users/rockwellrice/Portfolio/android/BeTrueorNotBeTrue/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_49aa39811324d55c635e6d48275e496549690bd0/classes.dex" />
     </item>
     <item
@@ -88,7 +88,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="9203ae658011544edc02dfdbc18e48965ddb3575">
+        sha1="fd7ae27e088e446278823a1c10ee2fbe3014a805">
         <dex dex="/Users/rockwellrice/Portfolio/android/BeTrueorNotBeTrue/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_6c63d978fb180d433bde52bffd148e9e99935706/classes.dex" />
     </item>
     <item
