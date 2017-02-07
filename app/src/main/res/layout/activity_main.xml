@@ -10,9 +10,18 @@
     tools:context="com.example.android.betrueornotbetrue.MainActivity">
 
     <TextView
+        android:id="@+id/the_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:gravity="center"
+        android:text="Is this a Shakespeare quote?"/>
+
+    <TextView
         android:id="@+id/question_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:padding="24dp"
         android:text=""/>
 
