@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         new Question(R.string.question2, true),
         new Question(R.string.question3, true),
         new Question(R.string.question4, true),
-        new Question(R.string.question5, true),
+        new Question(R.string.question5, false),
     };
 
     private int mCurrentIndex = 0;
